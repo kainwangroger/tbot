@@ -15,7 +15,7 @@ build:
 
 make deploy:
 	@echo "Deploying the project..."
-	docker run -d -p 8007:80 kainwangroger/allmight_bot .
+	docker run -d -p 8007:80 kainwangroger/allmight_bot
 
 serve:
 	@echo "Starting development server..."
