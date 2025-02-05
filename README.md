@@ -1,4 +1,4 @@
-# Tele-QR
+# Qrgram
 
 Qrgram is a Telegram bot that generates QR codes from user input. Simply send a text message to the bot, and it will return a QR code image.
 
