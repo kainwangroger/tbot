@@ -6,11 +6,6 @@ pipeline {
     }
 
     stages {
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/htagcours/tbot.git'
-            }
-        }
 
         stage('Build Docker Image') {
             steps {
@@ -23,9 +18,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    dockerImage.inside {
-                        sh 'pytest tests'
-                    }
+                    sh 'make test'
                 }
             }
         }
