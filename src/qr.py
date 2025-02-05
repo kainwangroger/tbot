@@ -1,4 +1,4 @@
-import qrcode, os
+import qrcode
 
 
 def generate_qr(chat_id, user_input):

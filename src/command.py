@@ -15,9 +15,7 @@ async def show_help(update, context):
         update: default telegram arg
         context: default telegram arg
     """
-    await update.message.reply_text("""Simply send a text to generate a QR for it!\n
-Have ideas and suggestions for this mini project? Head over to the
-<a href="https://github.com/tjtanjin/tele-qr">Project Repository</a>!""", parse_mode=ParseMode.HTML, disable_web_page_preview=True) # noqa
+    await update.message.reply_text("""Simply send a text to generate a QR for it!\nHave ideas and suggestions for this mini project? Head over to the main <a>Project Repository</a>!""", parse_mode=ParseMode.HTML, disable_web_page_preview=True) # noqa
     return None
 
 

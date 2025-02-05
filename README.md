@@ -32,7 +32,7 @@ Qrgram is a Telegram bot that generates QR codes from user input. Simply send a 
 
 3. Run the Docker container:
     ```sh
-    docker run -d --name tele-qr-bot tele-qr
+    docker run -d --name hervlokossou/allmight_bot
     ```
 
 ## Usage
