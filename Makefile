@@ -15,7 +15,7 @@ build:
 
 make deploy:
 	@echo "Deploying the project..."
-	docker run -d -p 8001:80 hervlokossou/fastapi-app
+	docker run -d -p 8001:80 hervlokossou/allmight_bot
 
 serve:
 	@echo "Starting development server..."
