@@ -21,8 +21,8 @@ Qrgram is a Telegram bot that generates QR codes from user input. Simply send a 
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/
-    cd tele-qr
+    git clone https://github.com/htagcours/tbot.git
+    cd tbot
     ```
 
 2. Build the Docker image:
