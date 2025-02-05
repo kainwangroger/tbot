@@ -5,18 +5,11 @@ pipeline {
         BOT_TOKEN = credentials('telegram-bot-token')
     }
 
-        stage('Initialize') {
+    stages {
+        stage('Initialiser') {
             steps {
                 script {
-                    sh 'make venv && make install'
-                }
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
-                script { 
-                    sh 'make test'
+                    echo "Initialisation du pipeline"
                 }
             }
         }
@@ -24,22 +17,33 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'make build'
+                    dockerImage = docker.build("qrgram")
                 }
             }
         }
 
-        stage('Deploy') {
+        stage('Exécuter les tests') {
             steps {
                 script {
-                    sh 'make deploy'
+                    dockerImage.inside {
+                        sh 'pytest tests'
+                    }
                 }
             }
         }
 
-        post {
-            always {
-                cleanWs()
+        stage('Déployer') {
+            steps {
+                script {
+                    sh 'docker run -d --name qrgram-bot qrgram'
+                }
             }
         }
     }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}
