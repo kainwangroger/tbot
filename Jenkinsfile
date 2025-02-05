@@ -9,7 +9,7 @@ pipeline {
     stage('Initialize') {
         steps {
             script {
-                    sh 'make venv && make install'
+                sh 'make venv && make install'
                 }
             }
         }
@@ -18,10 +18,10 @@ pipeline {
     stage('Run Tests') {
         steps {
             script { 
-                    sh 'make test'
-                    }
+                sh 'make test'
                 }
             }
+        }
 
 
     stage('Build Docker Image') {
