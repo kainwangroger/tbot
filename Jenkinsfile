@@ -5,13 +5,6 @@ pipeline {
         BOT_TOKEN = credentials('telegram-bot-token')
     }
 
-    stages {
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/htagcours/tbot.git'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 script {
