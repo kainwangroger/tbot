@@ -1,4 +1,4 @@
-from src.main import app
+# from src.main import app
 
 
 def test_read_main():
