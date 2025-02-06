@@ -13,16 +13,15 @@ build:
 	@echo "Building the project..."
 	docker build -t rogerboukar07/kainwang_bot .
 
-make deploy:
-	@echo "Stopping and removing any existing container..."
-	@CONTAINER_ID=$$(docker ps -aq --filter "ancestor=rogerboukar07/kainwang_bot") && \
-	if [ -n "$$CONTAINER_ID" ]; then \
-		docker stop $$CONTAINER_ID; \
-		docker rm $$CONTAINER_ID; \
-	fi
+# check-quality:
+# 	@echo "Checking code quality..."
+# 	sonar-scanner -Dsonar.projectKey=hervlokossou -Dsonar.sources=. -Dsonar.host.url=http://15.237.5.155:9000 -Dsonar.token=sqp_a28f8acd0eebb9a1238e977054361e2620414410
 
+make deploy:
 	@echo "Deploying the project..."
-	docker run -d -p 8007:80 --name kainwang_bot rogerboukar07/kainwang_bot
+	chmod +x deploy.sh
+	./deploy.sh
+	docker run -d -p 8001:80 hervlokossou/allmight_bot
 
 serve:
 	@echo "Starting development server..."
