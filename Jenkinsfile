@@ -47,6 +47,7 @@ pipeline {
         stage('Déployer') {
             steps {
                 script {
+                    sh 'docker rm -f qrgram-bot-kr'
                     sh 'docker run -d --name qrgram-bot-kr qrgram-kr'
                 }
             }
