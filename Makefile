@@ -15,6 +15,7 @@ build:
 
 make deploy:
 	@echo "Deploying the project..."
+	docker stop -f kainwang_bot
 	docker run -d -p 8007:80 rogerboukar07/kainwang_bot
 
 serve:

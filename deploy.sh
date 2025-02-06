@@ -28,8 +28,8 @@ then
     echo "Container removed."
 fi
 
-# pull the latest image
-docker pull repo/image:master
+# # pull the latest image
+# docker pull rogerboukar07/kainwang_bot:master
 
 # run new docker container
 docker run -d --restart always --name $CONTAINER_NAME --env-file ./.env rogerboukar07/kainwang_bot:master
