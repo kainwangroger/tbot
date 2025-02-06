@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         BOT_TOKEN = credentials('telegram-bot-token')
+        SCANNER_HOME = tool 'Sonar-scanner'
     }
 
     stages {
@@ -16,6 +17,19 @@ pipeline {
         stage('Code Quality') {
             steps {
                 script {
+                    withSonarQubeEnv(credentialsId: 'sonarqube', installationName: 'Sonar') {
+                    sh '''$SCANNER_HOME/bin/sonar-scanner \
+                         -Dsonar.projectKey=hervlokossou \
+                         -Dsonar.projectName=tbot \
+                         -Dsonar.host.url=http://15.237.5.155:9000 \
+                         -Dsonar.sources=. \
+                         -Dsonar.java.binaries=target/classes/ \
+                         -Dsonar.exclusions=src/test/java/****/*.java \
+                         -Dsonar.java.libraries=/var/lib/jenkins/.m2/**/*.jar \
+                         -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}
+                        '''
+       }
+     }
                     sh 'make check-quality'
                 }
             }
