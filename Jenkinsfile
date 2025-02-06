@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    options {
+        ansiColor('xterm')
+    }
+
     environment {
         BOT_TOKEN = credentials('telegram-bot-token')
         SCANNER_HOME = tool 'Sonar-scanner'
