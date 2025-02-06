@@ -14,9 +14,15 @@ build:
 	docker build -t rogerboukar07/kainwang_bot .
 
 make deploy:
+	@echo "Stopping and removing any existing container..."
+	@CONTAINER_ID=$$(docker ps -aq --filter "ancestor=rogerboukar07/kainwang_bot") && \
+	if [ -n "$$CONTAINER_ID" ]; then \
+		docker stop $$CONTAINER_ID; \
+		docker rm $$CONTAINER_ID; \
+	fi
+
 	@echo "Deploying the project..."
-	docker rm -f $(docker ps -a --filter ancestor=rogerboukar07/kainwang_bot --format="{{.ID}}")
-	docker run -d -p 8007:80 rogerboukar07/kainwang_bot --name kainwang_bot
+	docker run -d -p 8007:80 --name kainwang_bot rogerboukar07/kainwang_bot
 
 serve:
 	@echo "Starting development server..."
