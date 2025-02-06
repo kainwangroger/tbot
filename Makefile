@@ -19,7 +19,7 @@ check-quality:
 
 make deploy:
 	@echo "Deploying the project..."
-	docker run -d -p 8001:80 hervlokossou/allmight_bot --name allmight_bot
+	docker run -d  --name allmight_bot -p 8001:80 hervlokossou/allmight_bot
 
 serve:
 	@echo "Starting development server..."
