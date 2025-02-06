@@ -4,6 +4,7 @@ pipeline {
     environment {
         BOT_TOKEN = credentials('telegram-bot-token')
         SCANNER_HOME = tool 'Sonar-scanner'
+        ADMIN_EMAIL = "hervlokossou@gmail.com"
     }
 
     stages {
@@ -14,24 +15,17 @@ pipeline {
                 }
             }
         }
-        stage('Code Quality') {
+        /*stage('SonarQube Code Quality Analysis') {
             steps {
-                steps {
-                    withSonarQubeEnv(credentialsId: 'sonarqube', installationName: 'Sonar') {
-                    sh '''$SCANNER_HOME/bin/sonar-scanner \
-                         -Dsonar.projectKey=hervlokossou \
-                         -Dsonar.projectName=tbot \
-                         -Dsonar.host.url=http://15.237.5.155:9000 \
-                         -Dsonar.sources=. \
-                         -Dsonar.java.binaries=target/classes/ \
-                         -Dsonar.exclusions=src/test/java/****/*.java \
-                         -Dsonar.java.libraries=/var/lib/jenkins/.m2/**/*.jar \
-                         -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}
-                        '''
-                    }
+                withSonarQubeEnv(credentialsId: 'sonar-credentialsId', installationName: 'Sonar') {
+                     sh '''$SCANNER_HOME/bin/sonar-scanner \
+                     -Dsonar.projectKey=hervlokossou \
+                     -Dsonar.projectName=hervlokossou \
+                     -Dsonar.sources=. \
+                     -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}'''
                 }
             }
-        }
+        }*/
         stage('Run Tests') {
             steps {
                 script {
@@ -57,7 +51,21 @@ pipeline {
 
     post {
         always {
+            echo 'This will always run'
             cleanWs()
         }
+         success {
+             echo 'This will run only if successful'
+         }
+         failure {
+             mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "${env.ADMIN_EMAIL}";
+         }
+         unstable {
+             echo 'This will run only if the run was marked as unstable'
+         }
+         changed {
+             echo 'This will run only if the state of the Pipeline has changed'
+             echo 'For example, if the Pipeline was previously failing but is now successful'
+         }
     }
 }
