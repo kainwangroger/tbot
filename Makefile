@@ -11,7 +11,7 @@ install:
 
 build:
 	@echo "Building the project..."
-	docker build --no-cache -t hervlokossou/allmight_bot .
+	docker build --no-cache -t hervlokossou/allmight_bot:latest .
 
 check-quality:
 	@echo "Checking code quality..."
@@ -19,7 +19,8 @@ check-quality:
 
 make deploy:
 	@echo "Deploying the project..."
-	docker run -d -p 8001:80 hervlokossou/allmight_bot
+	docker stop -f $(docker ps -a -q --filter ancestor=hervlokossou/allmight_bot --format="{{.ID}}")
+	docker run -d -p 8001:80 hervlokossou/allmight_bot --name allmight_bot
 
 serve:
 	@echo "Starting development server..."
