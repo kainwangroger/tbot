@@ -11,11 +11,11 @@ install:
 
 build:
 	@echo "Building the project..."
-	docker build -t rogerboukar07/allmight_bot .
+	docker build -t rogerboukar07/kainwang_bot .
 
 make deploy:
 	@echo "Deploying the project..."
-	docker run -d -p 8007:80 rogerboukar07/allmight_bot
+	docker run -d -p 8007:80 rogerboukar07/kainwang_bot
 
 serve:
 	@echo "Starting development server..."
