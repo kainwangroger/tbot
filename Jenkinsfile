@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([file(credentialsId: 'kr-tbot-env-file', variable: 'ENV_FILE')]) {
-                        sh "cat $ENV_FILE >> kr-env-file"
+                        sh "cat $ENV_FILE >> .env"
                     }
                 }
             }
@@ -57,7 +57,8 @@ pipeline {
 
     post {
         always {
-            cleanWs()
+            echo 'This will always run'
+            // cleanWs()
         }
     }
 }
