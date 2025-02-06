@@ -11,7 +11,7 @@ install:
 
 build:
 	@echo "Building the project..."
-	docker build -t rogerboukar07/kainwang_bot .
+	docker build  --no-cache -t rogerboukar07/kainwang_bot .
 
 # check-quality:
 # 	@echo "Checking code quality..."

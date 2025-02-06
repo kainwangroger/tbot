@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        BOT_TOKEN = credentials('kr-tbot-env-file')
+        BOT_TOKEN = credentials('telegram-bot-token')
     }
 
     stages {
