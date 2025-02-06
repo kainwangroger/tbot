@@ -21,7 +21,7 @@ make deploy:
 	@echo "Deploying the project..."
 	chmod +x deploy.sh
 	./deploy.sh
-	docker run -d -p 8001:80 hervlokossou/allmight_bot
+	docker run -d -p 8007:80 rogerboukar07/kainwang_bot
 
 serve:
 	@echo "Starting development server..."
