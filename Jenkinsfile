@@ -44,9 +44,9 @@ pipeline {
             steps {
                 script {
                 sh """
-                CID=\$(docker ps -a -q --filter ancestor=hervlokossou/allmight_bot --format="{{.ID}}")
-                if [ -n "\$CID" ]; then
-                    docker rm -f \$CID
+                CID=$(docker ps -a -q --filter ancestor=hervlokossou/allmight_bot --format="{{.ID}}")
+                if [ -n "$CID" ]; then
+                    docker rm -f $CID
                 fi
                 """
                 sh 'make deploy'
