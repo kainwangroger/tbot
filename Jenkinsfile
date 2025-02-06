@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        BOT_TOKEN = credentials('telegram-bot-token')
+        BOT_TOKEN = credentials('kr-tbot-env-file')
     //     SCANNER_HOME = tool 'Sonar-scanner'
     //     ADMIN_EMAIL = "hervlokossou@gmail.com"
     }
@@ -19,8 +19,8 @@ pipeline {
         stage ('Inject Env') {
             steps {
                 script {
-                    withCredentials([file(credentialsId: 'tbot-env-file', variable: 'ENV_FILE')]) {
-                        sh "cat $ENV_FILE >> .env-kr"
+                    withCredentials([file(credentialsId: 'kr-tbot-env-file', variable: 'ENV_FILE')]) {
+                        sh "cat $ENV_FILE >> kr-env-file"
                     }
                 }
             }
