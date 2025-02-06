@@ -19,6 +19,15 @@ pipeline {
                 }
             }
         }
+        stage ('Inject Env') {
+            steps {
+                script {
+                    withCredentials([file(credentialsId: 'tbot-env-file', variable: 'ENV_FILE')]) {
+                        sh "cat $ENV_FILE"
+                    }
+                }
+            }
+        }
         /*stage('SonarQube Code Quality Analysis') {
             steps {
                 withSonarQubeEnv(credentialsId: 'sonar-credentialsId', installationName: 'Sonar') {
