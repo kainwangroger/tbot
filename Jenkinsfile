@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        BOT_TOKEN = credentials('telegram-bot-token')
+        BOT_TOKEN = credentials('kr-tbot-env-file')
     }
 
     stages {
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([file(credentialsId: 'kr-tbot-env-file', variable: 'ENV_FILE')]) {
-                        sh "cat $ENV_FILE >> .env"
+                        sh "cat $ENV_FILE >> kr-env-file"
                     }
                 }
             }
