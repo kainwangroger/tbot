@@ -13,6 +13,13 @@ pipeline {
                 }
             }
         }
+        stage('Code Quality') {
+            steps {
+                script {
+                    sh 'make check-quality'
+                }
+            }
+        }
         stage('Run Tests') {
             steps {
                 script {
