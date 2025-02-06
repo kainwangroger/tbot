@@ -17,7 +17,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("qrgram")
+                    dockerImage = docker.build("qrgram-kr")
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
         stage('Déployer') {
             steps {
                 script {
-                    sh 'docker run -d --name qrgram-bot qrgram'
+                    sh 'docker run -d --name qrgram-bot-kr qrgram-kr'
                 }
             }
         }
