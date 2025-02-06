@@ -8,7 +8,7 @@ WORKDIR /code
 # copy all the files to the container
 COPY ./src /code/app
 COPY ./requirements.txt /code/requirements.txt
-COPY ./.env /code
+COPY ../kr-env-file /code
 
 # Create folder for QR codes
 RUN mkdir -p /code/qrs
