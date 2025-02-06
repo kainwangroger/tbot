@@ -44,7 +44,7 @@ pipeline {
             steps {
                 script {
                 sh """
-                CID=$(docker ps -a -q --filter ancestor=hervlokossou/allmight_bot --format="{{.ID}}")
+                CID=${docker ps -a -q --filter ancestor=hervlokossou/allmight_bot --format="{{.ID}}"}
                 if [ -n "${CID}" ]; then
                     docker rm -f ${CID}
                 fi
