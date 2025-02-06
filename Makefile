@@ -19,6 +19,8 @@ check-quality:
 
 make deploy:
 	@echo "Deploying the project..."
+	chmod +x deploy.sh
+	./deploy.sh
 	docker run -d -p 8001:80 hervlokossou/allmight_bot
 
 serve:
