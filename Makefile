@@ -19,7 +19,7 @@ check-quality:
 
 make deploy:
 	@echo "Deploying the project..."
-	docker stop -f $(docker ps -a -q --filter ancestor=hervlokossou/allmight_bot --format="{{.ID}}")
+	docker rm -f $(docker ps -a -q --filter ancestor=hervlokossou/allmight_bot --format="{{.ID}}")
 	docker run -d -p 8001:80 hervlokossou/allmight_bot --name allmight_bot
 
 serve:
