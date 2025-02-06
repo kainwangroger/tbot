@@ -28,9 +28,7 @@ pipeline {
                          -Dsonar.java.libraries=/var/lib/jenkins/.m2/**/*.jar \
                          -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}
                         '''
-       }
-     }
-                    sh 'make check-quality'
+                    }
                 }
             }
         }
