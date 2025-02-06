@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Code Quality') {
             steps {
-                script {
+                steps {
                     withSonarQubeEnv(credentialsId: 'sonarqube', installationName: 'Sonar') {
                     sh '''$SCANNER_HOME/bin/sonar-scanner \
                          -Dsonar.projectKey=hervlokossou \
