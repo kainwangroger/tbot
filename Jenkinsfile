@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    options {
+        ansiColor('xterm')
+    }
+
     environment {
         BOT_TOKEN = credentials('kr-tbot-env-file')
         // SCANNER_HOME = tool 'Sonar-scanner'
@@ -10,7 +14,11 @@ pipeline {
 
     stages {
         stage('Initialize') {
+        stage('Initialize') {
             steps {
+                script {
+                    sh 'make venv && make install'
+                }
                 script {
                     sh 'make venv && make install'
                 }
@@ -42,10 +50,10 @@ pipeline {
                 }
             }
         }
-
         stage('Deploy') {
             steps {
                 script {
+                    sh 'make deploy'
                     sh 'make deploy'
                 }
             }
