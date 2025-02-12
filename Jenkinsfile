@@ -5,6 +5,7 @@ pipeline {
         BOT_TOKEN = credentials('kr-tbot-env-file')
         // SCANNER_HOME = tool 'Sonar-scanner'
         // ADMIN_EMAIL = 'rogerboukar07@gmail.com'
+        // ADMIN_EMAIL = 'rogerboukar07@gmail.com'
     }
 
     stages {
