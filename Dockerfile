@@ -2,6 +2,7 @@ FROM python:3.12-slim
 
 LABEL MAINTAINER=EsgisDevopsTeam
 
+# 
 # set a directory for the app
 WORKDIR /code
 
