@@ -2,7 +2,9 @@ pipeline {
     agent any
 
     environment {
-        BOT_TOKEN = credentials('telegram-bot-token')
+        BOT_TOKEN = credentials('kr-tbot-env-file')
+        SCANNER_HOME = tool 'Sonar-scanner'
+        ADMIN_EMAIL = 'rogerboukar07@gmail.com'
     }
 
     stages {
