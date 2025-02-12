@@ -14,7 +14,6 @@ pipeline {
 
     stages {
         stage('Initialize') {
-        stage('Initialize') {
             steps {
                 script {
                     sh 'make venv && make install'
