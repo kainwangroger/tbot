@@ -18,9 +18,6 @@ pipeline {
                 script {
                     sh 'make venv && make install'
                 }
-                script {
-                    sh 'make venv && make install'
-                }
             }
         }
 
