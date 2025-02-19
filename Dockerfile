@@ -9,7 +9,7 @@ WORKDIR /code
 # copy all the files to the container
 COPY ./src /code/app
 COPY ./requirements.txt /code/requirements.txt
-COPY ../kr-env-file /code
+COPY ../kr-telegram-bot-token /code
 
 # Create folder for QR codes
 RUN mkdir -p /code/qrs
