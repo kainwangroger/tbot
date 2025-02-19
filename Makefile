@@ -11,7 +11,7 @@ install:
 
 build:
 	@echo "Building the project..."
-	docker build  --no-cache -t kainwangroger/kainwang_bot:latest .
+	docker build  --no-cache -t rogerboukar07/kainwang_bot:latest .
 # 
 # check-quality:
 # 	@echo "Checking code quality..."
@@ -21,7 +21,7 @@ make deploy:
 	@echo "Deploying the project..."
 	chmod +x deploy.sh
 	./deploy.sh
-	docker run -d -p 8007:80 kainwangroger/kainwang_bot:latest
+	docker run -d -p 8007:80 rogerboukar07/kainwang_bot:latest
 
 serve:
 	@echo "Starting development server..."
