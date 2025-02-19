@@ -7,9 +7,6 @@ pipeline {
 
     environment {
         BOT_TOKEN = credentials('kr-tbot-env-file')
-        // SCANNER_HOME = tool 'Sonar-scanner'
-        // ADMIN_EMAIL = 'rogerboukar07@gmail.com'
-        // ADMIN_EMAIL = 'rogerboukar07@gmail.com'
     }
 
     stages {
@@ -50,7 +47,6 @@ pipeline {
             steps {
                 script {
                     sh 'make deploy'
-                    sh 'make deploy'
                 }
             }
         }
@@ -59,7 +55,7 @@ pipeline {
     post {
         always {
             echo 'This will always run'
-            //cleanWs()
+            cleanWs()
         }
     }
 }
